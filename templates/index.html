@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AQI Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: 500;
+            display: block;
+            margin: 15px 0 5px;
+            text-align: left;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4facfe;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00c6ff;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d2d2d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Air Quality Index Predictor</h2>
+        <form action="/predict" method="post">
+            <label for="co">CO AQI Value:</label>
+            <input type="number" step="any" name="co" id="co" required>
+
+            <label for="ozone">Ozone AQI Value:</label>
+            <input type="number" step="any" name="ozone" id="ozone" required>
+
+            <label for="no2">NO2 AQI Value:</label>
+            <input type="number" step="any" name="no2" id="no2" required>
+
+            <label for="pm25">PM2.5 AQI Value:</label>
+            <input type="number" step="any" name="pm25" id="pm25" required>
+
+            <input type="submit" value="Predict AQI">
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
+
