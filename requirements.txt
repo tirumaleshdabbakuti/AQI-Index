@@ -3,4 +3,3 @@ scikit-learn
 joblib
 numpy
 pandas
-guncorn==20.1.0
